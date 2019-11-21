@@ -1,6 +1,6 @@
 resource "azuread_application" "default" {
   count = "${var.env_count}"
-  name  = "${var.name}-${var.environment}-count.index"
+  name  = "${var.name}-${var.environment}-${count.index}"
 }
 
 resource "azuread_service_principal" "default" {

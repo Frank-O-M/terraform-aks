@@ -35,5 +35,20 @@ variable "dns_prefix" {
 
 variable "env_count" {
   description = "How many envs are deployed"
-  default     = "3"
+  default     = "1"
+}
+
+variable "user_name" {
+  description = "Username for the resource group"
+  default     = "testuser"
+}
+
+variable "user_password" {
+  description = "Password for the user"
+  default     = "Password_123456789!"
+}
+
+variable "domain" {
+  description = "Domain of the users"
+  default     = "frankoltmannsmackoutlook.onmicrosoft.com"
 }
