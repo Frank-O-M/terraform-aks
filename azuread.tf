@@ -31,6 +31,6 @@ resource "azurerm_role_assignment" "aks_network" {
 resource "azurerm_role_assignment" "aks_acr" {
   count                = "${var.env_count}"
   scope                = "${data.azurerm_subscription.current.id}/resourceGroups/${element(azurerm_resource_group.default.*.name, count.index)}/providers/Microsoft.ContainerRegistry/registries/${element(azurerm_container_registry.default.*.name, count.index)}"
-  role_definition_name = "Reader"
+  role_definition_name = "AcrPull"
   principal_id         = "${element(azuread_service_principal.default.*.id, count.index)}"
 }
