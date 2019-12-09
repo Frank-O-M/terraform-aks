@@ -4,7 +4,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   location            = "${element(azurerm_resource_group.default.*.location, count.index)}"
   resource_group_name = "${element(azurerm_resource_group.default.*.name, count.index)}"
   dns_prefix          = "${var.dns_prefix}-${var.name}-aks-${var.environment}-${count.index}"
-  depends_on          = ["azurerm_role_assignment.aks_network", "azurerm_role_assignment.aks_acr"]
+  depends_on          = ["azurerm_role_assignment.aks_network", "azurerm_role_assignment.aks_acr", "null_resource.delay_after_sp_created"]
 
   agent_pool_profile {
     name            = "default"

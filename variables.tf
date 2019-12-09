@@ -20,7 +20,7 @@ variable "location" {
 
 variable "node_count" {
   description = "The number of K8S nodes to provision."
-  default     = 1
+  default     = 3
 }
 
 variable "node_type" {
@@ -35,7 +35,7 @@ variable "dns_prefix" {
 
 variable "env_count" {
   description = "How many envs are deployed"
-  default     = "1"
+  default     = "16"
 }
 
 variable "user_name" {

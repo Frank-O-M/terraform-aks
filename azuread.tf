@@ -34,3 +34,12 @@ resource "azurerm_role_assignment" "aks_acr" {
   role_definition_name = "AcrPull"
   principal_id         = "${element(azuread_service_principal.default.*.id, count.index)}"
 }
+
+resource "null_resource" "delay_after_sp_created" {
+  provisioner "local-exec" {
+    command = "sleep 60"
+  }
+  triggers = {
+    "before" = "element(azuread_service_principal_password.default.value, count.index)"
+  }
+}
